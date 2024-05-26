@@ -1,6 +1,7 @@
 import re
 from collections import Counter
 
+from input_parser import parse_input
 
 # noinspection PyUnusedLocal
 # skus = unicode string
