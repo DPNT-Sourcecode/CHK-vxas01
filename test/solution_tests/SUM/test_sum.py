@@ -13,4 +13,3 @@ class TestSum():
 
     def test_one_zero(self):
         assert sum_solution.compute(0, 100) == 100
-
