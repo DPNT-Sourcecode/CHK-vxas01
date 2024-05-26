@@ -19,3 +19,28 @@ class TestCheckout():
     def test_multiple(self):
         assert checkout_solution.checkout('AB') == 80
         assert checkout_solution.checkout('ABCD') == 115
+
+    def test_incomplete_promo(self):
+        assert checkout_solution.checkout('AA') == 100
+
+    def test_complete_promo(self):
+        assert checkout_solution.checkout('AAA') == 130
+
+    def test_promo_overflow(self):
+        assert checkout_solution.checkout('AAAA') == 180
+
+    def test_promo_with_mixed(self):
+        assert checkout_solution.checkout('BAB') == 95
+
+    def test_promo_overflow_with_mixed(self):
+        assert checkout_solution.checkout('AABAA') == 210
+
+    def test_multiple_promo_single(self):
+        assert checkout_solution.checkout('AAAAAA') == 260
+
+    def test_multiple_mixed_promos(self):
+        assert checkout_solution.checkout('AAABB') == 175
+
+    def test_multiple_promo_overflow(self):
+        assert checkout_solution.checkout('AAAABBB') == 255
+
