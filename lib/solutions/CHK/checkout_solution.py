@@ -30,12 +30,12 @@ def checkout(skus: str) -> int:
         # Account for any promotions by using mod
         if sku in promo_data:
             # Try to apply the best promotion (most items) first
-            promo_counts = sorted(promo_data[sku].values(), reverse=True)
+            promos = sorted(promo_data[sku].items(), reverse=True)
 
-            for count in promo_counts:
-                promo_packages = count // promo_data[sku]['count']
-                subtotal += promo_packages * promo_data[sku]['price']
-                count -= promo_packages * promo_data[sku]['count']
+            for promo_count, promo_price in promos:
+                promo_packages = count // promo_count
+                subtotal += promo_packages * promo_price
+                count -= promo_packages * promo_count
 
         subtotal += count * price_data[sku]
 
@@ -49,6 +49,7 @@ def checkout(skus: str) -> int:
     counter = Counter(skus)
 
     return sum([get_item_subtotal(sku, counter[sku]) for sku in counter])
+
 
 
 
