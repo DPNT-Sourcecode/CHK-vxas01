@@ -27,6 +27,9 @@ def checkout(skus: str) -> int:
     free_item_data = {
         'E': {
             2: 'B',
+        },
+        'F': {
+            2: 'F',
         }
     }
 
@@ -50,7 +53,7 @@ def checkout(skus: str) -> int:
 
     # Check for illegal input (it's unclear for now if the string is just 'AAA' or e.g. comma-separated,
     # let's assume just SKUs themselves for now
-    if re.search('[^ABCDE]', skus):
+    if re.search(f"[^{''.join(price_data.keys())}]", skus):
         return -1
 
     counter = Counter(skus)
@@ -70,6 +73,7 @@ def checkout(skus: str) -> int:
                     counter -= reward_counter
 
     return sum([get_item_subtotal(sku, counter[sku]) for sku in counter])
+
 
 
 

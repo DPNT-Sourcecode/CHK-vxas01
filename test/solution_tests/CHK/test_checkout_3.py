@@ -64,3 +64,7 @@ class TestCheckout():
 
     def test_free_product_same_sku(self):
         assert checkout_solution.checkout('FFF') == 20
+        assert checkout_solution.checkout('FFFF') == 30
+        assert checkout_solution.checkout('FFFFF') == 40
+        assert checkout_solution.checkout('FFFFFF') == 40
+
