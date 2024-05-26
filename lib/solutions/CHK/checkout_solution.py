@@ -16,6 +16,6 @@ def checkout(skus: str) -> int:
     if re.search('[^ABCD]', skus):
         return -1
 
-    return 0
+    return sum([price_data[sku] for sku in skus])
 
 
