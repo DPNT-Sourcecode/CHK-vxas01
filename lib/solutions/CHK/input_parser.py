@@ -22,17 +22,22 @@ def parse_input(path):
             for promo_str in promo_raw_items:
                 if 'for' in promo_str:
                     # Regular promotion
-                    quantity, sku, price = re.match(r'(\d+)([A-Z]) for (\d+)', promo_str)
+                    quantity, sku, price = re.match(r'(\d+)([A-Z]) for (\d+)', promo_str).groups()
                     promo_data[sku][int(quantity)] = int(price)
-                else:
+                elif 'get one' in promo_str:
                     # Free item promotion
-                    quantity, sku, price = re.match(r'(\d+)([A-Z]) for (\d+)', promo_str)
-                    promo_data[sku][int(quantity)] = int(price)
+                    quantity, sku, reward = re.match(r'(\d+)([A-Z]) get one ([A-Z]) free', promo_str).groups()
+                    free_item_data[sku][int(quantity)] = reward
 
+
+    print(price_data)
+    print(promo_data)
+    print(free_item_data)
     return price_data, promo_data, free_item_data
 
 
 parse_input("./challenges/CHK_R4.txt")
+
 
 
 
