@@ -25,7 +25,13 @@ def checkout(skus: str) -> int:
 
     def get_item_subtotal(sku: str, count: int) -> int:
         """Calculate subtotal for given item type (single SKU) and count."""
+        subtotal = 0
+
         # Account for any promotions by using mod
+        if sku in promo_data:
+            promo_packages = count // promo_data[sku]['count']
+            subtotal += promo_packages * promo_data[sku]['price']
+            count -= promo_packages * promo_data[sku]['count']
 
 
     # Check for illegal input (it's unclear for now if the string is just 'AAA' or e.g. comma-separated,
@@ -36,8 +42,3 @@ def checkout(skus: str) -> int:
     counter = Counter(skus)
 
     return sum([get_item_subtotal(sku, counter[sku]) for sku in skus])
-
-
-
-
-
