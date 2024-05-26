@@ -10,16 +10,16 @@ def checkout(skus: str) -> int:
         'B': 30,
         'C': 20,
         'D': 15,
+        'E': 40,
     }
 
     promo_data = {
         'A': {
-            'count': 3,
-            'price': 130,
+            3: 130,
+            5: 200,
         },
         'B': {
-            'count': 2,
-            'price': 45,
+            2: 45,
         },
     }
 
@@ -39,11 +39,12 @@ def checkout(skus: str) -> int:
 
     # Check for illegal input (it's unclear for now if the string is just 'AAA' or e.g. comma-separated,
     # let's assume just SKUs themselves for now
-    if re.search('[^ABCD]', skus):
+    if re.search('[^ABCDE]', skus):
         return -1
 
     counter = Counter(skus)
 
     return sum([get_item_subtotal(sku, counter[sku]) for sku in counter])
+
 
 
