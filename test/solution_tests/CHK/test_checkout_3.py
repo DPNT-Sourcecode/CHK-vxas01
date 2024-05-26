@@ -1,6 +1,7 @@
 from solutions.CHK import checkout_solution
 from solutions.CHK import input_parser
 
+
 class TestCheckout():
     def test_empty(self):
         assert checkout_solution.checkout('') == 0
@@ -75,4 +76,24 @@ class TestCheckout():
         assert checkout_solution.checkout('FFFFFA') == 90
 
     def test_input_parser(self):
-        assert
+        price_data, promo_data, free_item_data = input_parser.parse_input(
+            """
+        | F    | 10    | 2F get one F free      |
+        | P    | 50    | 5P for 200             |
+        | R    | 50    | 3R get one Q free      |
+        """)
+
+        assert price_data == {
+            'F': 10,
+            'P': 50,
+            'R': 50,
+        }
+        assert promo_data == {
+            'P': {
+                5: 200,
+            }
+        }
+        assert free_item_data == {
+            'F': 
+            'R': 'Q',
+        }
