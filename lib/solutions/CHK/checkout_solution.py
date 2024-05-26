@@ -6,33 +6,35 @@ from input_parser import parse_input
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus: str) -> int:
-    price_data = {
-        'A': 50,
-        'B': 30,
-        'C': 20,
-        'D': 15,
-        'E': 40,
-        'F': 10,
-    }
+    # price_data = {
+    #     'A': 50,
+    #     'B': 30,
+    #     'C': 20,
+    #     'D': 15,
+    #     'E': 40,
+    #     'F': 10,
+    # }
+    #
+    # promo_data = {
+    #     'A': {
+    #         3: 130,
+    #         5: 200,
+    #     },
+    #     'B': {
+    #         2: 45,
+    #     },
+    # }
+    #
+    # free_item_data = {
+    #     'E': {
+    #         2: 'B',
+    #     },
+    #     'F': {
+    #         3: 'F',
+    #     }
+    # }
 
-    promo_data = {
-        'A': {
-            3: 130,
-            5: 200,
-        },
-        'B': {
-            2: 45,
-        },
-    }
-
-    free_item_data = {
-        'E': {
-            2: 'B',
-        },
-        'F': {
-            3: 'F',
-        }
-    }
+    price_data, promo_data, free_item_data = parse_input(skus)
 
     def get_item_subtotal(sku: str, count: int) -> int:
         """Calculate subtotal for given item type (single SKU) and count."""
@@ -74,3 +76,4 @@ def checkout(skus: str) -> int:
                     counter -= reward_counter
 
     return sum([get_item_subtotal(sku, counter[sku]) for sku in counter])
+
