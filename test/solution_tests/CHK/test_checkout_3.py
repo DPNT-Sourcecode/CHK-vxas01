@@ -98,5 +98,3 @@ class TestCheckout():
                 3: 'Q',
             },
         }
-
-
