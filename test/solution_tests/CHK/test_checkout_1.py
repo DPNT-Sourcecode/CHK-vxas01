@@ -43,4 +43,3 @@ class TestCheckout():
 
     def test_multiple_promo_overflow(self):
         assert checkout_solution.checkout('AAAABBB') == 255
-

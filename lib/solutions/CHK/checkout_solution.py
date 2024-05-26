@@ -49,8 +49,3 @@ def checkout(skus: str) -> int:
     counter = Counter(skus)
 
     return sum([get_item_subtotal(sku, counter[sku]) for sku in counter])
-
-
-
-
-
