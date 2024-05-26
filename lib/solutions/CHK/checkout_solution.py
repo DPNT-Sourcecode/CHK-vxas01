@@ -55,8 +55,8 @@ def checkout(skus: str) -> int:
     counter = Counter(skus)
 
     # Apply free items before other promos
-    for sku in counter.values():
-        count = counter[sku]
+    for sku in list(counter.keys()):
+        count = counter.get(sku, 0)
 
         if sku in free_item_data:
             promos = sorted(free_item_data[sku].items(), reverse=True)
@@ -69,6 +69,7 @@ def checkout(skus: str) -> int:
                     counter -= reward_counter
 
     return sum([get_item_subtotal(sku, counter[sku]) for sku in counter])
+
 
 
 
