@@ -94,6 +94,10 @@ class TestCheckout():
             }
         }
         assert free_item_data == {
-            'F': 
-            'R': 'Q',
+            'F': {
+                3: 'F',
+            },
+            'R': {
+                3: 'Q',
+            },
         }

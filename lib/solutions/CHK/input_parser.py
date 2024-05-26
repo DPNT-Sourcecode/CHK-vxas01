@@ -36,5 +36,3 @@ def parse_input(path):
 
     return price_data, promo_data, free_item_data
 
-
-parse_input("./challenges/CHK_R4.txt")

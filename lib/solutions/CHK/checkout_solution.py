@@ -1,7 +1,7 @@
 import re
 from collections import Counter
 
-from input_parser import parse_input
+from .input_parser import parse_input
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -34,7 +34,8 @@ def checkout(skus: str) -> int:
     #     }
     # }
 
-    price_data, promo_data, free_item_data = parse_input(skus)
+    path = "./challenges/CHK_R4.txt"
+    price_data, promo_data, free_item_data = parse_input(path)
 
     def get_item_subtotal(sku: str, count: int) -> int:
         """Calculate subtotal for given item type (single SKU) and count."""
@@ -76,3 +77,4 @@ def checkout(skus: str) -> int:
                     counter -= reward_counter
 
     return sum([get_item_subtotal(sku, counter[sku]) for sku in counter])
+
