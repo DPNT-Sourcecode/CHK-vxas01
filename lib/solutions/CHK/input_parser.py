@@ -33,6 +33,12 @@ def parse_input(path):
                         quantity = int(quantity) + 1
 
                     free_item_data[sku][int(quantity)] = reward
+                elif 'buy any' in promo_str:
+                    # Mixed items promotion
+                    quantity, sku, price = re.match(r'(\d+)([A-Z]) for (\d+)', promo_str).groups()
+                    promo_data[sku][int(quantity)] = int(price)
+
 
     return price_data, promo_data, free_item_data
+
 
