@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "accelerate-runner"
+version = "0.1.0"
+description = ""
+authors = ["Lukasz Przybyla <l.przybyla90@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+tdl-client-python = "0.27.6"
+coverage = "6.4.2"
+pytest = "7.1.2"
+pytest-cov = "3.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
