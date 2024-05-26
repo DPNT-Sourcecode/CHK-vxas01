@@ -37,13 +37,13 @@ class TestCheckout():
         assert checkout_solution.checkout('AABAA') == 210
 
     def test_multiple_better_promo(self):
-        assert checkout_solution.checkout('AAAAAA') == 200
+        assert checkout_solution.checkout('AAAAA') == 200
 
     def test_multiple_promo_single(self):
-        assert checkout_solution.checkout('AAAAAAAAAAA') == 400
+        assert checkout_solution.checkout('AAAAAAAAAA') == 400
 
     def test_multiple_promo_single_mixed_quantities(self):
-        assert checkout_solution.checkout('AAAAAAAAA') == 330
+        assert checkout_solution.checkout('AAAAAAAA') == 330
 
     def test_multiple_mixed_promos(self):
         assert checkout_solution.checkout('AAABB') == 175
@@ -59,3 +59,4 @@ class TestCheckout():
 
     def test_free_product_2(self):
         assert checkout_solution.checkout('EEBB') == 110
+
