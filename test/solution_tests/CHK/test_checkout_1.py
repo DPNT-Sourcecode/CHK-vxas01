@@ -16,3 +16,8 @@ class TestCheckout():
         assert checkout_solution.checkout('C') == 20
         assert checkout_solution.checkout('D') == 15
 
+    def test_multiple(self):
+        assert checkout_solution.checkout('AB') == 80
+        assert checkout_solution.checkout('ABCD') == 115
+
+

@@ -1,4 +1,5 @@
 import re
+from collections import Counter
 
 
 # noinspection PyUnusedLocal
@@ -16,6 +17,9 @@ def checkout(skus: str) -> int:
     if re.search('[^ABCD]', skus):
         return -1
 
+    counter = Counter(skus)
+
     return sum([price_data[sku] for sku in skus])
+
 
 
