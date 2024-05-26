@@ -11,6 +11,7 @@ def checkout(skus: str) -> int:
         'C': 20,
         'D': 15,
         'E': 40,
+        'F': 10,
     }
 
     promo_data = {
@@ -69,6 +70,7 @@ def checkout(skus: str) -> int:
                     counter -= reward_counter
 
     return sum([get_item_subtotal(sku, counter[sku]) for sku in counter])
+
 
 
 
