@@ -1,3 +1,4 @@
+import re
 
 
 # noinspection PyUnusedLocal
@@ -9,4 +10,12 @@ def checkout(skus: str) -> int:
         'C': 20,
         'D': 15,
     }
+
+    # Check for illegal input (it's unclear for now if the string is just 'AAA' or e.g. comma-separated,
+    # let's assume just SKUs themselves for now
+    if re.search('[^ABCD]', skus):
+        return -1
+
+    return 0
+
 
