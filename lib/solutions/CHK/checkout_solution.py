@@ -23,12 +23,15 @@ def checkout(skus: str) -> int:
         },
     }
 
+    free_item_data = {
+        'E': {
+            2: 'B',
+        }
+    }
+
     def get_item_subtotal(sku: str, count: int) -> int:
         """Calculate subtotal for given item type (single SKU) and count."""
         subtotal = 0
-
-        # Apply free items before other promos
-        
 
         # Account for any promotions by using mod
         if sku in promo_data:
@@ -51,5 +54,11 @@ def checkout(skus: str) -> int:
 
     counter = Counter(skus)
 
+    # Apply free items before other promos
+    for sku in counter:
+        if sku in free_item_data:
+            promos = sorted(free_item_data[sku].items(), reverse=True)
+
     return sum([get_item_subtotal(sku, counter[sku]) for sku in counter])
+
 
