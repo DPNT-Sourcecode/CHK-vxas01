@@ -59,4 +59,3 @@ class TestCheckout():
 
     def test_free_product_2(self):
         assert checkout_solution.checkout('EEBB') == 110
-
