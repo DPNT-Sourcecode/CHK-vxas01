@@ -1,5 +1,5 @@
 from solutions.CHK import checkout_solution
-
+from solutions.CHK import input_parser
 
 class TestCheckout():
     def test_empty(self):
@@ -73,3 +73,6 @@ class TestCheckout():
         assert checkout_solution.checkout('FFFA') == 70
         assert checkout_solution.checkout('FFFFA') == 80
         assert checkout_solution.checkout('FFFFFA') == 90
+
+    def test_input_parser(self):
+        assert

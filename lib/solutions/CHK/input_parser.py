@@ -27,19 +27,14 @@ def parse_input(path):
                 elif 'get one' in promo_str:
                     # Free item promotion
                     quantity, sku, reward = re.match(r'(\d+)([A-Z]) get one ([A-Z]) free', promo_str).groups()
+
+                    # We need to account for same-sku free item promotions
+                    if sku == reward:
+                        quantity = int(quantity) + 1
+
                     free_item_data[sku][int(quantity)] = reward
 
-
-    print(price_data)
-    print(promo_data)
-    print(free_item_data)
     return price_data, promo_data, free_item_data
 
 
 parse_input("./challenges/CHK_R4.txt")
-
-
-
-
-
-
