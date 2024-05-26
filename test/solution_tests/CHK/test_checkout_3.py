@@ -76,12 +76,7 @@ class TestCheckout():
         assert checkout_solution.checkout('FFFFFA') == 90
 
     def test_input_parser(self):
-        price_data, promo_data, free_item_data = input_parser.parse_input(
-            """
-        | F    | 10    | 2F get one F free      |
-        | P    | 50    | 5P for 200             |
-        | R    | 50    | 3R get one Q free      |
-        """)
+        price_data, promo_data, free_item_data = input_parser.parse_input("./solutions/CHK/test_input")
 
         assert price_data == {
             'F': 10,
@@ -101,3 +96,4 @@ class TestCheckout():
                 3: 'Q',
             },
         }
+
