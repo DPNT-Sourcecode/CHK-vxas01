@@ -24,7 +24,7 @@ def parse_input(path):
                 if 'buy any' in promo_str:
                     # Mixed items promotion
                     quantity, sku, price = \
-                        re.match(r'buy any (\d+) of ([A-Z(),]*) for (\d+)', promo_str).groups()
+                        re.match(r'buy any (\d+) of \(([A-Z,]*)\) for (\d+)', promo_str).groups()
                     group_promo_data[sku][int(quantity)] = int(price)
                 elif 'for' in promo_str:
                     # Regular promotion
@@ -48,12 +48,4 @@ def parse_input(path):
             skus.sort(key=lambda sku: price_data[sku], reverse=True)
             new_group_promo_data[''.join(skus)] = group_promo_data[key]
 
-        print(new_group_promo_data)
-
     return price_data, promo_data, free_item_data, new_group_promo_data
-
-
-
-
-
-

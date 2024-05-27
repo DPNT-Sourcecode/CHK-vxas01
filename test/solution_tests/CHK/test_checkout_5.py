@@ -78,12 +78,18 @@ class TestCheckout():
     # In this case (CHK_R4), the logic has not changed, so we should be okay
     # just testing the automated input parsing.
     def test_input_parser(self):
-        price_data, promo_data, free_item_data = input_parser.parse_input("./lib/solutions/CHK/test_input.txt")
+        price_data, promo_data, free_item_data, group_promo_data \
+            = input_parser.parse_input("./lib/solutions/CHK/test_input.txt")
 
         assert price_data == {
             'F': 10,
             'P': 50,
             'R': 50,
+            'S': 20,
+            'T': 20,
+            'X': 17,
+            'Y': 20,
+            'Z': 21,
         }
         assert promo_data == {
             'P': {
@@ -96,6 +102,11 @@ class TestCheckout():
             },
             'R': {
                 3: 'Q',
+            },
+        }
+        assert group_promo_data == {
+            'ZSTYX': {
+                3: 45,
             },
         }
 
@@ -117,5 +128,3 @@ class TestCheckout():
     def test_group_count_optimum(self):
         assert checkout_solution.checkout('STXY') == 62
         assert checkout_solution.checkout('STXYZ') == 82
-
-
