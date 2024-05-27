@@ -98,3 +98,14 @@ class TestCheckout():
                 3: 'Q',
             },
         }
+
+    def test_group_discount(self):
+        assert checkout_solution.checkout('SSS') == 45
+        assert checkout_solution.checkout('SST') == 45
+        assert checkout_solution.checkout('XYZ') == 45
+
+    def test_group_count_with_leftover_items(self):
+        assert checkout_solution.checkout('SSS') == 45
+
+    def test_group_count_optimum(self):
+
