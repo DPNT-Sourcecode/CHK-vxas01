@@ -78,7 +78,11 @@ def checkout(skus: str) -> int:
 
     # Apply group promotions before individual ones
     for sku_group in group_promo_data:
-        
+        match_counter = Counter()
+
+        for sku in sku_group:
+            
 
     return sum([get_item_subtotal(sku, counter[sku]) for sku in counter])
+
 
