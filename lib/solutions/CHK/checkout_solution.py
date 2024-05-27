@@ -3,6 +3,7 @@ from collections import Counter
 
 from .input_parser import parse_input
 
+
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus: str) -> int:
@@ -78,11 +79,14 @@ def checkout(skus: str) -> int:
 
     # Apply group promotions before individual ones
     for sku_group in group_promo_data:
-        match_counter = Counter()
+        match_counter = {}  # Can't use Counter here, because it breaks ordering
 
         for sku in sku_group:
-            
+            match_counter[sku] = counter[sku]
+
+        while sum(match_counter.values()) > 0:
 
     return sum([get_item_subtotal(sku, counter[sku]) for sku in counter])
+
 
 
