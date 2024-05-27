@@ -92,11 +92,13 @@ def checkout(skus: str) -> int:
                 for sku in sku_group:
                     if match_counter[sku] > 0:
                         match_counter[sku] -= 1
+                        counter[sku] -= 1
                         break
 
             total += promo_price
 
     return sum([total] + [get_item_subtotal(sku, counter[sku]) for sku in counter])
+
 
 
 
