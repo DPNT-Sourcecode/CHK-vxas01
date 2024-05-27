@@ -7,6 +7,7 @@ def parse_input(path):
         price_data = {}
         promo_data = defaultdict(dict)
         free_item_data = defaultdict(dict)
+        group_promo_data = defaultdict(dict)
 
         file_content = input_file.read()
         data = re.findall(r'\|\s+([A-Z])\s+\|\s+(\d+)\s+\|\s+(.*)\s+\|\n', file_content)
@@ -40,3 +41,4 @@ def parse_input(path):
 
 
     return price_data, promo_data, free_item_data
+
