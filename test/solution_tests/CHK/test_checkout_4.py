@@ -74,3 +74,27 @@ class TestCheckout():
         assert checkout_solution.checkout('FFFA') == 70
         assert checkout_solution.checkout('FFFFA') == 80
         assert checkout_solution.checkout('FFFFFA') == 90
+
+    # In this case (CHK_R4), the logic has not changed, so we should be okay
+    # just testing the automated input parsing.
+    def test_input_parser(self):
+        price_data, promo_data, free_item_data = input_parser.parse_input("./lib/solutions/CHK/test_input.txt")
+
+        assert price_data == {
+            'F': 10,
+            'P': 50,
+            'R': 50,
+        }
+        assert promo_data == {
+            'P': {
+                5: 200,
+            }
+        }
+        assert free_item_data == {
+            'F': {
+                3: 'F',
+            },
+            'R': {
+                3: 'Q',
+            },
+        }
