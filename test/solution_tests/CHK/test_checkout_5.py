@@ -128,4 +128,3 @@ class TestCheckout():
     def test_group_count_optimum(self):
         assert checkout_solution.checkout('STXY') == 62
         assert checkout_solution.checkout('STXYZ') == 82
-

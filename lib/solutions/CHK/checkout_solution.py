@@ -98,11 +98,3 @@ def checkout(skus: str) -> int:
             total += promo_price
 
     return sum([total] + [get_item_subtotal(sku, counter[sku]) for sku in counter])
-
-
-
-
-
-
-
-
