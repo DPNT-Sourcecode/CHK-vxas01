@@ -103,9 +103,19 @@ class TestCheckout():
         assert checkout_solution.checkout('SSS') == 45
         assert checkout_solution.checkout('SST') == 45
         assert checkout_solution.checkout('XYZ') == 45
+        assert checkout_solution.checkout('XYZA') == 115
 
     def test_group_count_with_leftover_items(self):
-        assert checkout_solution.checkout('SSS') == 45
+        assert checkout_solution.checkout('SSSS') == 65
+        assert checkout_solution.checkout('SSSSS') == 85
+        assert checkout_solution.checkout('SSSSSSS') == 110
+
+    def test_group_count_multiple(self):
+        assert checkout_solution.checkout('SSSSSS') == 90
+        assert checkout_solution.checkout('STXYZS') == 90
 
     def test_group_count_optimum(self):
+        assert checkout_solution.checkout('STXY') == 62
+        assert checkout_solution.checkout('STXYZ') == 82
+
 
