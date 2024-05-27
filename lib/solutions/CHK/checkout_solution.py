@@ -80,7 +80,7 @@ def checkout(skus: str) -> int:
 
     # Apply group promotions before individual ones
     for sku_group, promo_data in group_promo_data.items():
-        promo_count, promo_price = promo_data.items()[0]
+        promo_count, promo_price = list(promo_data.items())[0]
         match_counter = {}  # Can't use Counter here, because it breaks ordering
 
         for sku in sku_group:
@@ -89,11 +89,15 @@ def checkout(skus: str) -> int:
         while sum(match_counter.values()) >= promo_count:
             # Reduce in batches of size == promo_count
             for i in range(promo_count):
-                
+                for sku in sku_group:
+                    if match_counter[sku] > 0:
+                        match_counter[sku] -= 1
+                        break
 
             total += promo_price
 
     return sum([total] + [get_item_subtotal(sku, counter[sku]) for sku in counter])
+
 
 
 
