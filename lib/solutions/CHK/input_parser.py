@@ -40,7 +40,18 @@ def parse_input(path):
 
                     free_item_data[sku][int(quantity)] = reward
 
-    return price_data, promo_data, free_item_data
+        # Modify the keys of group_promo_data to include items in decreasing price order
+        new_group_promo_data = {}
+
+        for key in group_promo_data:
+            skus = key.split(',')
+            skus.sort(key=lambda sku: price_data[sku], reverse=True)
+            new_group_promo_data[''.join(skus)] = group_promo_data[key]
+
+        print(new_group_promo_data)
+
+    return price_data, promo_data, free_item_data, new_group_promo_data
+
 
 
 

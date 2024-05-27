@@ -35,7 +35,7 @@ def checkout(skus: str) -> int:
     # }
 
     path = "./challenges/CHK_R5.txt"
-    price_data, promo_data, free_item_data = parse_input(path)
+    price_data, promo_data, free_item_data, group_promo_data = parse_input(path)
 
     def get_item_subtotal(sku: str, count: int) -> int:
         """Calculate subtotal for given item type (single SKU) and count."""
@@ -77,4 +77,5 @@ def checkout(skus: str) -> int:
                     counter -= reward_counter
 
     return sum([get_item_subtotal(sku, counter[sku]) for sku in counter])
+
 
