@@ -61,6 +61,7 @@ def checkout(skus: str) -> int:
     if re.search(f"[^{''.join(price_data.keys())}]", skus):
         return -1
 
+    total = 0
     counter = Counter(skus)
 
     # Apply free items before other promos
@@ -85,9 +86,15 @@ def checkout(skus: str) -> int:
         for sku in sku_group:
             match_counter[sku] = counter[sku]
 
-        while sum(match_counter.values()) > promo_count:
+        while sum(match_counter.values()) >= promo_count:
+            # Reduce in batches of size == promo_count
+            for i in range(promo_count):
+                
 
-    return sum([get_item_subtotal(sku, counter[sku]) for sku in counter])
+            total += promo_price
+
+    return sum([total] + [get_item_subtotal(sku, counter[sku]) for sku in counter])
+
 
 
 
